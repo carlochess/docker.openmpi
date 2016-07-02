@@ -1,8 +1,9 @@
-# Build this image:  docker build -t mpi .
-#
+# Build this image:  docker build -t carlochess/openmpi .
 
 FROM ubuntu:14.04
-MAINTAINER Ole Weidner <ole.weidner@ed.ac.uk>
+
+MAINTAINER Carlos Roman <carlochess@gmail.com>
+# Based on Ole Weidner's image, reach him at <ole.weidner@ed.ac.uk>
 
 ENV DEBIAN_FRONTEND noninteractive
 
@@ -46,7 +47,7 @@ RUN chmod -R 600 /home/mpirun/.ssh/* && \
 # Copy Rosa's MPI4PY example scripts
 # ------------------------------------------------------------
 
-ADD mpi4py_benchmarks /home/mpirun/mpi4py_benchmarks
+ADD demo /home/mpirun/mpi4py_benchmarks
 RUN chown mpirun:mpirun /home/mpirun/mpi4py_benchmarks
 
 EXPOSE 22
