@@ -47,7 +47,7 @@ RUN chmod -R 600 /home/mpirun/.ssh/* && \
 # Copy Rosa's MPI4PY example scripts
 # ------------------------------------------------------------
 
-ADD demo /home/mpirun/mpi4py_benchmarks
+ADD demo /demo
 RUN chown mpirun:mpirun /home/mpirun/mpi4py_benchmarks
 
 EXPOSE 22
