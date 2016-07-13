@@ -48,7 +48,7 @@ RUN chmod -R 600 /home/mpirun/.ssh/* && \
 # ------------------------------------------------------------
 
 ADD demo /demo
-RUN chown mpirun:mpirun /home/mpirun/mpi4py_benchmarks
+RUN chown mpirun:mpirun /demo
 
 EXPOSE 22
 CMD ["/usr/sbin/sshd", "-D"]
