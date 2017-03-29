@@ -6,11 +6,11 @@ including the MPI4Py Python bindings. The container also runs an OpenSSH server
 so that multiple containers can be linked together and used via `mpirun`.
 
 ```
-$> container=docker run -d -p 22 carlochess/openmpi
+$> container=docker run -d -p 2222 carlochess/openmpi
 # Check port of container
 $> docker inspect $container
 # And then, filled on port number, eg. 22
-$> ssh -p 22 mpirun@localhost # password mpirun
+$> ssh -p 2222 root@localhost # password mpirun
 ```
 
 
@@ -29,12 +29,8 @@ services:
     image: carlochess/openmpi
     ports: 
      - "22"
-    volumes:
-     - ./app:/app
   mpi_node: 
     image: carlochess/openmpi
-    volumes:
-     - ./app:/app
 ```
 
 The file defines an `mpi_head` and an `mpi_node`. Both containers run the same `openmpi` image. 
@@ -62,7 +58,7 @@ $> ssh -p 23227 mpirun@localhost
 ## Start an MPI Container Cluster with Docker Swarm
 You could also run in a cluster of computers using Docker Swarm or Swarm mode (Docker 1.12).
 
-Consider use a nfs server with /app folder
+You may need an nfs server mounted in /app folder
 
 First, create a Overlay network
 ```
